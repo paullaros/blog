@@ -81,13 +81,13 @@ export default defineConfig({
     head.push(['meta', { property: 'og:title', content: pageData.frontmatter.title }])
     head.push(['meta', { property: 'og:description', content: pageData.frontmatter.description }])
     
-    head.push(['meta', { property: 'twitter:url', content: url }])
-    head.push(['meta', { property: 'twitter:title', content: pageData.frontmatter.title }])
-    head.push(['meta', { property: 'twitter:description', content: pageData.frontmatter.description }])
+    head.push(['meta', { name: 'twitter:url', content: url }])
+    head.push(['meta', { name: 'twitter:title', content: pageData.frontmatter.title }])
+    head.push(['meta', { name: 'twitter:description', content: pageData.frontmatter.description }])
 
     if(pageData.frontmatter.image){
       head.push(['meta', { property: 'og:image', content: `${rootUrl}${pageData.frontmatter.image}` }])
-      head.push(['meta', { property: 'twitter:image', content: `${rootUrl}${pageData.frontmatter.image}` }])
+      head.push(['meta', { name: 'twitter:image', content: `${rootUrl}${pageData.frontmatter.image}` }])
     }
 
     if(pageData.frontmatter.tag){
