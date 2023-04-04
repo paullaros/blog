@@ -1,0 +1,27 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "author": "Paul Laros <paul@laros.io>",
+  "repository": "https://github.com/paullaros/blog",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vitepress dev src --port 3000",
+    "build": "vitepress build src",
+    "serve": "vitepress serve src --port 3000"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "sitemap": "^7.1.1",
+    "tailwindcss": "^3.3.1",
+    "vitepress": "^1.0.0-alpha.64"
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
+  }
+}
