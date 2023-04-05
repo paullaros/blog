@@ -7,7 +7,7 @@ date: 2023-04-04
 tag: Supabase
 ---
 
-# {{ $frontmatter.title }}
+# Updating timestamps automatically in Supabase
 
 Supabase makes it easy to update timestamps automatically whenever a row is created or updated in your database, using the `MODDATETIME` extension. This can especially be useful in applications where data is frequently changed.
 

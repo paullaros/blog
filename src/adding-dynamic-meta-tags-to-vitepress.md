@@ -7,7 +7,7 @@ date: 2023-04-03
 tag: VitePress
 ---
 
-# {{ $frontmatter.title }}
+# Adding dynamic meta tags to VitePress
 
 It is generally recommended to include meta tags on your webpage to ensure that your content can be indexed by search engines and is displayed correctly when shared on social media.
 

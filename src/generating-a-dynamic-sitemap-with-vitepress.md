@@ -7,7 +7,7 @@ date: 2023-04-03
 tag: VitePress
 ---
 
-# {{ $frontmatter.title }}
+# Generating a dynamic sitemap with VitePress
 
 By including a sitemap on your website, you can ensure that all pages are indexed by search engines, which can improve your site's visibility in search results and make it easier for users to navigate.
 
