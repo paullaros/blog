@@ -35,25 +35,23 @@ import { SitemapStream } from 'sitemap'
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
 
-const sitemapLinks: { url: string, lastmod: number | undefined }[] = []
-
 export default defineConfig({
   lastUpdated: true,
-  transformHtml: (_, id, { pageData }) => {
-    // Exclude 404 page
-    if (!/[\\/]404\.html$/.test(id))
-      sitemapLinks.push({
-        url: pageData.relativePath.replace(/\.md$/, '.html'),
-        lastmod: pageData.lastUpdated
-      })
-  },
   buildEnd: async ({ outDir }) => {
-    // Set your hostname
     const sitemap = new SitemapStream({ hostname: 'https://laros.io/' })
+    const pages = await createContentLoader('*.md').load()
     const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
+
     sitemap.pipe(writeStream)
-    sitemapLinks.forEach((link) => sitemap.write(link))
+    pages.forEach((page) => sitemap.write(
+      page.url
+        // Strip `index.html` from URL
+        .replace(/index.html$/g, '')
+        // Optional: if Markdown files are located in a subfolder
+        .replace(/^\/docs/, '')
+      ))
     sitemap.end()
+
     await new Promise((r) => writeStream.on('finish', r))
   }
 })
@@ -61,21 +59,13 @@ export default defineConfig({
 
 ## Clean URLs
 
-If you have [clean URLs](https://vitepress.dev/guide/routing#generating-clean-url) enabled, use the following `transformHtml` build hook instead. Everything else can remain the same.
+If you have [clean URLs](https://vitepress.dev/guide/routing#generating-clean-url) enabled, use the following regex instead. Everything else can remain the same.
 
 ```ts
-export default defineConfig({
-  //...
-  transformHtml: (_, id, { pageData }) => {
-    // Exclude 404 page
-    if (!/[\\/]404\.html$/.test(id))
-      links.push({
-        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
-        lastmod: pageData.lastUpdated
-      })
-  }
-  //...
-})
+// If `cleanUrls is enabled`
+.replace(/index$/g, '')
+// If `cleanUrls` is disabled
+.replace(/index.html$/g, '')
 ```
 
 ## Resources
