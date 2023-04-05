@@ -1,4 +1,4 @@
-import type { HeadConfig } from 'vitepress';
+import type { HeadConfig } from 'vitepress'
 
 const head: HeadConfig[] = [
   ['meta', { name: 'theme-color', content: '#06b6d4' }],

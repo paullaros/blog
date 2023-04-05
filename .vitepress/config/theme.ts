@@ -1,4 +1,4 @@
-import type { DefaultTheme } from 'vitepress';
+import type { DefaultTheme } from 'vitepress'
 
 const themeConfig: DefaultTheme.Config = {
   logo: {

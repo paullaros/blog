@@ -4,7 +4,7 @@ const generateMeta = (context: TransformContext, hostname: string) => {
   const head: HeadConfig[] = []
   const { pageData } = context
 
-  const url = `${hostname}${pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2')}`;
+  const url = `${hostname}/${pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2')}`
 
   head.push(['link', { rel: 'canonical', href: url }])
 

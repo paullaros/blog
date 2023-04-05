@@ -5,8 +5,9 @@ import head from "./head"
 
 import generateMeta from './hooks/generateMeta'
 import generateSitemap from './hooks/generateSitemap'
+import generateFeed from './hooks/generateFeed'
 
-const hostname: string = 'https://laros.io/'
+const hostname: string = 'https://laros.io'
 
 export default defineConfig({
   appearance: 'dark',
@@ -23,5 +24,6 @@ export default defineConfig({
   ),
   buildEnd: async (context) => {
     generateSitemap(context, hostname)
+    generateFeed(context, hostname)
   }
 })
