@@ -42,7 +42,8 @@ async function generateFeed(config: SiteConfig, hostname: string) {
       author: [
         {
           name: 'Paul Laros',
-          link: 'https://twitter.com/paullaros'
+          email: 'hey@laros.io',
+          link: 'https://laros.io'
         }
       ],
       date: frontmatter.date
