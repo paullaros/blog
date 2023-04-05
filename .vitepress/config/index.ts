@@ -1,4 +1,4 @@
-import { HeadConfig, defineConfig } from 'vitepress'
+import { HeadConfig, createContentLoader, defineConfig } from 'vitepress'
 
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
@@ -6,8 +6,7 @@ import { SitemapStream } from 'sitemap'
 
 import sidebarItems from "./sidebarItems";
 
-const sitemapLinks: { url: string, lastmod: number | undefined }[] = []
-const rootUrl: string = 'https://laros.io/';
+const hostname: string = 'https://laros.io/';
 
 export default defineConfig({
   appearance: 'dark',
@@ -73,7 +72,7 @@ export default defineConfig({
   transformHead: ({ pageData }) => {
     const head: HeadConfig[] = []
 
-    const url = `${rootUrl}${pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2')}`;
+    const url = `${hostname}${pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2')}`;
 
     head.push(['link', { rel: 'canonical', href: url }])
 
@@ -87,8 +86,8 @@ export default defineConfig({
     head.push(['meta', { name: 'twitter:description', content: pageData.frontmatter.description }])
 
     if(pageData.frontmatter.image){
-      head.push(['meta', { property: 'og:image', content: `${rootUrl}${pageData.frontmatter.image}` }])
-      head.push(['meta', { name: 'twitter:image', content: `${rootUrl}${pageData.frontmatter.image}` }])
+      head.push(['meta', { property: 'og:image', content: `${hostname}${pageData.frontmatter.image}` }])
+      head.push(['meta', { name: 'twitter:image', content: `${hostname}${pageData.frontmatter.image}` }])
     }
 
     if(pageData.frontmatter.tag){
@@ -105,19 +104,19 @@ export default defineConfig({
 
     return head
   },
-  transformHtml: (_, id, { pageData }) => {
-    if (!/[\\/]404\.html$/.test(id))
-      sitemapLinks.push({
-        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
-        lastmod: pageData.lastUpdated
-      })
-  },
   buildEnd: async ({ outDir }) => {
-    const sitemap = new SitemapStream({ hostname: rootUrl })
+    const sitemap = new SitemapStream({ hostname: hostname })
+    const pages = await createContentLoader('src/*.md').load()
     const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
+
     sitemap.pipe(writeStream)
-    sitemapLinks.forEach((link) => sitemap.write(link))
+    pages.forEach((page) => sitemap.write(
+      page.url
+        .replace(/index$/g, '')
+        .replace(/^\/src/, '')
+      ))
     sitemap.end()
+
     await new Promise((r) => writeStream.on('finish', r))
   }
 })
