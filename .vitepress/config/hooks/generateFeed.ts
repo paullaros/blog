@@ -37,7 +37,8 @@ async function generateFeed(config: SiteConfig, hostname: string) {
       title: frontmatter.title,
       id: fullUrl,
       link: fullUrl,
-      description: excerpt,
+      // description: excerpt,
+      description: frontmatter.description,
       content: html,
       author: [
         {
