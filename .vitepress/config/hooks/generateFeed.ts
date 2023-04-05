@@ -31,7 +31,11 @@ async function generateFeed(config: SiteConfig, hostname: string) {
   )
 
   for (const { url, excerpt, frontmatter, html } of filteredPosts) {
+    // Remove `/src` from URL
     const fullUrl = `${hostname}${url.replace(/^\/src/, '')}`
+
+    // Strip `&ZeroWidthSpace;` from `html` string
+    const content = html?.replace(/&ZeroWidthSpace;/g, '');
 
     feed.addItem({
       title: frontmatter.title,
@@ -39,7 +43,7 @@ async function generateFeed(config: SiteConfig, hostname: string) {
       link: fullUrl,
       // description: excerpt,
       description: frontmatter.description,
-      content: html,
+      content: content,
       author: [
         {
           name: 'Paul Laros',
