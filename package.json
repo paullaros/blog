@@ -7,9 +7,9 @@
   "repository": "https://github.com/paullaros/blog",
   "license": "MIT",
   "scripts": {
-    "dev": "vitepress dev src --port 3000",
-    "build": "vitepress build src",
-    "serve": "vitepress serve src --port 3000"
+    "dev": "vitepress dev --port 3000",
+    "build": "vitepress build",
+    "serve": "vitepress serve --port 3000"
   },
   "dependencies": {
     "@vercel/analytics": "^0.1.11",
