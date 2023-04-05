@@ -1,30 +1,25 @@
 :root {
-  --vp-c-brand: #3b82f6;
-  --vp-c-brand-light: #60a5fa;
-  --vp-c-brand-lighter: #93c5fd;
-  --vp-c-brand-dark: #2563eb;
-  --vp-c-brand-darker: #1d4ed8;
   --vp-layout-max-width: 1280px;
-  --vp-c-text-dark-1: rgba(255, 255, 255, 0.9);
-  --vp-c-text-dark-2: rgba(255, 255, 255, 0.5);
-  --vp-c-text-dark-3: rgba(255, 255, 255, 0.5);
-}
-
-.dark {
-  --vp-sidebar-bg-color: #0A0C0D;
-  --vp-c-bg: #101214;
+  --vp-c-brand: theme(colors.blue.500);
+  --vp-c-brand-light: theme(colors.blue.400);
+  --vp-c-brand-lighter: theme(colors.blue.300);
+  --vp-c-brand-dark: theme(colors.blue.600);
+  --vp-c-brand-darker: theme(colors.blue.700);
+  --vp-c-text-dark-1: theme(colors.white / 95%);
+  --vp-c-text-dark-2: theme(colors.white / 50%);
+  --vp-c-text-dark-3: theme(colors.white / 50%);
 }
 
 .dark ::selection {
-  background: #1e40af;
-  color: #ffffff;
+  @apply bg-blue-700;
+  @apply text-white;
 }
 
 .dark .vp-doc p,
 .dark .vp-doc li {
-  color: rgba(255, 255, 255, 0.7)
+  @apply text-white/[0.7];
 }
 
 .logo {
-  padding: 4px;
+  @apply p-1;
 }
