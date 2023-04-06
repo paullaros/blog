@@ -18,8 +18,8 @@ const generateMeta = (context: TransformContext, hostname: string) => {
   head.push(['meta', { name: 'twitter:description', content: pageData.frontmatter.description }])
 
   if(pageData.frontmatter.image){
-    head.push(['meta', { property: 'og:image', content: `${hostname}${pageData.frontmatter.image}` }])
-    head.push(['meta', { name: 'twitter:image', content: `${hostname}${pageData.frontmatter.image}` }])
+    head.push(['meta', { property: 'og:image', content: `${hostname}/${pageData.frontmatter.image}` }])
+    head.push(['meta', { name: 'twitter:image', content: `${hostname}/${pageData.frontmatter.image}` }])
   }
 
   if(pageData.frontmatter.tag){
