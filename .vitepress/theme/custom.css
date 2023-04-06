@@ -7,8 +7,8 @@
   --vp-c-text-dark-1: theme(colors.white / 95%);
   --vp-c-text-dark-2: theme(colors.white / 50%);
   --vp-c-text-dark-3: theme(colors.white / 50%);
-  --vp-sidebar-bg-color: transparent;
-  --vp-nav-bg-color: transparent;
+  --vp-sidebar-bg-color: theme(colors.transparent);
+  --vp-nav-bg-color: theme(colors.transparent);
 }
 
 .logo {
@@ -25,6 +25,11 @@
   @apply text-white;
 }
 
+.dark .VPSidebar {
+  @apply bg-[#121116];
+  @apply lg:bg-transparent;
+}
+
 .dark .vp-doc p,
 .dark .vp-doc li {
   @apply text-white/[0.7];
@@ -33,7 +38,7 @@
 .dark .curtain,
 .dark .curtain:before,
 .dark .aside-curtain {
-  background: transparent !important;
+  @apply bg-transparent !important;
 }
 
 .dark .bg-gradient:before,
@@ -45,8 +50,7 @@
   @apply rounded-3xl;
   @apply opacity-5;
   @apply bg-blue-500;
-  @apply -inset-10;
   @apply blur-[100px];
-  @apply w-[calc(100%+80px)];
-  @apply h-[calc(100%+80px)];
+  @apply w-full;
+  @apply h-full;
 }
