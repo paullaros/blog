@@ -10,7 +10,7 @@ lastUpdated: false
 ---
 
 <div class="w-full flex justify-center">
-  <div class="w-full md:w-2/3">
+  <div class="w-full md:w-2/3 bg-gradient relative">
     <div class="flex flex-col items-center sm:flex-row sm:items-start">
       <img src="/images/paul-laros.jpg" alt="Paul Laros" class="rounded-full w-44" />
       <div class="flex flex-col sm:ml-12 self-center">
