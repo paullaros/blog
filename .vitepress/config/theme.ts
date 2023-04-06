@@ -39,6 +39,10 @@ const themeConfig: DefaultTheme.Config = {
       text: 'VitePress',
       items: [
         {
+          text: 'Generating an RSS feed with VitePress',
+          link: '/generating-an-rss-feed-with-vitepress'
+        },
+        {
           text: 'Adding dynamic meta tags to VitePress',
           link: '/adding-dynamic-meta-tags-to-vitepress'
         },
