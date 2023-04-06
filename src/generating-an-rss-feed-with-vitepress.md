@@ -2,7 +2,7 @@
 type: article
 title: Generating an RSS feed with VitePress
 image: images/generating-an-rss-feed-with-vitepress.png
-description: TODO
+description: Learn how to generate an RSS feed with VitePress using build hooks and the feed npm module. Keep readers updated on new blog posts easily.
 date: 2023-04-06
 tag: VitePress
 ---
