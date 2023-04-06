@@ -30,6 +30,11 @@
   @apply lg:bg-transparent;
 }
 
+html:not(.dark) .VPSidebar {
+  @apply bg-white;
+  @apply lg:bg-transparent;
+}
+
 .dark .vp-doc p,
 .dark .vp-doc li {
   @apply text-white/[0.7];
