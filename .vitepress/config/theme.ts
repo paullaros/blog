@@ -55,6 +55,11 @@ const themeConfig: DefaultTheme.Config = {
     {
       text: 'Supabase',
       items: [
+        
+        {
+          text: 'Generating URL-friendly IDs in Supabase',
+          link: '/generating-url-friendly-ids-in-supabase'
+        },
         {
           text: 'Updating timestamps automatically in Supabase',
           link: '/updating-timestamps-automatically-in-supabase'
