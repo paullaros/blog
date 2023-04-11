@@ -40,10 +40,10 @@ html:not(.dark) .VPSidebar {
   @apply text-white/[0.7];
 }
 
-.dark .curtain,
-.dark .curtain:before,
-.dark .aside-curtain {
-  @apply bg-transparent !important;
+.curtain,
+.curtain:before,
+.aside-curtain {
+  @apply opacity-0;
 }
 
 .dark .bg-gradient:before,
