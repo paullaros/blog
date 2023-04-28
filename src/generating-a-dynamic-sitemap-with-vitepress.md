@@ -30,7 +30,7 @@ Place the following snippet in your VitePress config file, adjust the URL, and r
 `.vitepress/config.ts`
 
 ```ts
-import { defineConfig } from 'vitepress'
+import { createContentLoader, defineConfig } from 'vitepress'
 import { SitemapStream } from 'sitemap'
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
