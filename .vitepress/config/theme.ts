@@ -66,6 +66,16 @@ const themeConfig: DefaultTheme.Config = {
         },
       ]
     },
+    {
+      text: 'Angular',
+      items: [
+        
+        {
+          text: 'Using Angular Material\'s calendar with date ranges and range presets',
+          link: '/using-angular-material-calendar-with-date-ranges-and-range-presets'
+        },
+      ]
+    },
   ]
 }
 
