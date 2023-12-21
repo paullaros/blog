@@ -1,9 +1,7 @@
 :root {
-  --vp-c-brand: theme(colors.blue.500);
-  --vp-c-brand-light: theme(colors.blue.400);
-  --vp-c-brand-lighter: theme(colors.blue.300);
-  --vp-c-brand-dark: theme(colors.blue.600);
-  --vp-c-brand-darker: theme(colors.blue.700);
+  --vp-c-brand-1: theme(colors.blue.500);
+  --vp-c-brand-2: theme(colors.blue.400);
+  --vp-c-brand-3: theme(colors.blue.300);
   --vp-c-text-dark-1: theme(colors.white / 95%);
   --vp-c-text-dark-2: theme(colors.white / 50%);
   --vp-c-text-dark-3: theme(colors.white / 50%);
@@ -15,6 +13,7 @@
   @apply p-1;
 }
 
+/* Dark theme */
 .dark {
   --vp-c-bg: #121116;
   --vp-code-block-bg: #0E0F15;
@@ -58,4 +57,12 @@ html:not(.dark) .VPSidebar {
   @apply blur-[100px];
   @apply w-full;
   @apply h-full;
+}
+
+.vp-doc a {
+  text-decoration: none;
+}
+
+.vp-doc a:hover {
+  text-decoration: underline;
 }
