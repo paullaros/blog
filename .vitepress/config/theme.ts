@@ -7,7 +7,6 @@ const themeConfig: DefaultTheme.Config = {
   },
   socialLinks: [
     { icon: 'github', link: 'https://github.com/paullaros' },
-    { icon: 'twitter', link: 'https://twitter.com/paullaros' },
     { icon: 'linkedin', link: 'https://www.linkedin.com/in/paullaros/' },
     { 
       icon: {
