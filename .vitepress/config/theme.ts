@@ -75,6 +75,16 @@ const themeConfig: DefaultTheme.Config = {
         },
       ]
     },
+    {
+      text: 'Next.js',
+      items: [
+        
+        {
+          text: 'How to get the current URL with Next.js on Vercel',
+          link: '/how-to-get-the-current-url-with-nextjs-on-vercel'
+        },
+      ]
+    },
   ]
 }
 
