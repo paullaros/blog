@@ -9,7 +9,7 @@ tag: Next.js
 
 # How to get the current URL with Next.js on Vercel
 
-Vercel, a popular platform for deploying Next.js applications, provides convenient ways to manage environment variables. One such variable, `NEXT_PUBLIC_VERCEL_URL`, can be particularly useful for accessing the current URL of your application. In scenarios where dynamic preview URLs are generated on Vercel, accessing these URLs can be challenging. In this article, we'll explore how to access dynamic URLs and leverage the `dotenv-expand` package, in a Next.js project.
+Vercel, a popular platform for deploying Next.js applications, provides convenient ways to manage environment variables. One such variable, `NEXT_PUBLIC_VERCEL_URL`, can be particularly useful for obtaining the current URL of your application. In scenarios where dynamic preview URLs are generated on Vercel, obtaining the current URL can be challenging. In this article, we'll explore how to obtain dynamic URLs and leverage the `dotenv-expand` package, in a Next.js project.
 
 ## Exposing Environment Variables
 
