@@ -4,6 +4,7 @@ import DefaultTheme from 'vitepress/theme'
 
 // @ts-ignore
 import Date from './components/Date.vue'
+import Cursor from './components/Cursor.vue'
 
 import './tailwind.css'
 import './custom.css'
@@ -14,7 +15,8 @@ export default {
   ...DefaultTheme,
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      'doc-before': () => h(Date)
+      'doc-before': () => h(Date),
+      'layout-top': () => h(Cursor)
     })
   }
 }
