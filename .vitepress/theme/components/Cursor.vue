@@ -1,24 +1,18 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
-import { useRouter } from 'vitepress';
+import { useRoute } from 'vitepress';
 import gsap from 'gsap';
 
-const isMobileViewport = () => {
-  // Breakpoint inherited from Vitepress
-  return window.innerWidth < 960;
-};
+// Utility functions to determine if the user is on a mobile device
+const isViewportMobile = () => window.innerWidth < 960;
+const isUserAgentMobile = () => /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+const isMobileDevice = () => isViewportMobile() || isUserAgentMobile();
 
-const isMobileUserAgent = () => {
-  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-};
+// Refs and route
+const cursorRef = ref<HTMLDivElement | null>(null);
+const currentRoute = useRoute();
 
-const isMobile = () => {
-  return isMobileViewport() || isMobileUserAgent();
-};
-
-const square = ref<HTMLDivElement | null>(null);
-const router = useRouter();
-
+// Cursor state management
 const cursorState = ref({
   opacity: 1,
   size: 16,
@@ -26,83 +20,79 @@ const cursorState = ref({
   top: -8,
 });
 
+// Array to keep track of link elements
+const interactiveElements: HTMLElement[] = [];
+
+// Cursor animation handlers
+const handleMouseOver = () => {
+  gsap.to(cursorState.value, {
+    opacity: 0.25,
+    size: 48,
+    duration: 0.3,
+    ease: "power1.out"
+  });
+};
+
+const handleMouseLeave = () => {
+  gsap.to(cursorState.value, {
+    opacity: 1,
+    size: 16,
+    duration: 0.3,
+    ease: "power1.out"
+  });
+};
+
+// Initialize cursor event listeners
 const initializeCursor = () => {
-  // Use debounce to ensure all other JS is ready
   setTimeout(() => {
-    const handleMouseOver = () => {
-      gsap.to(cursorState.value, {
-        opacity: 0.25,
-        size: 48,
-        duration: 0.3,
-        ease: "power1.out"
-      });
-    };
-
-    const handleMouseLeave = () => {
-      gsap.to(cursorState.value, {
-        opacity: 1,
-        size: 16,
-        duration: 0.3,
-        ease: "power1.out"
-      });
-    };
-
-    document.querySelectorAll('a, button').forEach(link => {
-      link.addEventListener('mouseover', handleMouseOver);
-      link.addEventListener('mouseleave', handleMouseLeave);
-    });
-
-    onBeforeUnmount(() => {
-      document.querySelectorAll('a, button').forEach(link => {
-        link.removeEventListener('mouseover', handleMouseOver);
-        link.removeEventListener('mouseleave', handleMouseLeave);
-      });
+    const currentLinks = document.querySelectorAll('a, button');
+    currentLinks.forEach(element => {
+      element.addEventListener('mouseover', handleMouseOver);
+      element.addEventListener('mouseleave', handleMouseLeave);
+      interactiveElements.push(element as HTMLElement);
     });
   }, 0);
 };
 
+// Animation frame ID for smoother cursor movement
 let animationFrameId: number | null = null;
 
-const moveCursor = (e: MouseEvent) => {
-  // Cancel the previous frame if it's still queued
+// Function to move the cursor
+const moveCursor = (event: MouseEvent) => {
   if (animationFrameId) {
     cancelAnimationFrame(animationFrameId);
   }
 
-  // Use requestAnimationFrame to update cursor position
   animationFrameId = requestAnimationFrame(() => {
-    // Use GSAP to animate the cursor movement
     gsap.to(cursorState.value, {
-      left: e.clientX,
-      top: e.clientY,
+      left: event.clientX,
+      top: event.clientY,
       duration: 0.3,
       ease: "power1.out"
     });
   });
 };
 
+// Lifecycle hooks
 onMounted(() => {
-  if (!isMobile()) {
+  if (!isMobileDevice()) {
     initializeCursor();
     document.addEventListener('mousemove', moveCursor);
-
-    watch(
-      () => router.route.data.relativePath,
-      () => {
-        initializeCursor();
-      },
-      { immediate: true }
-    );
+    watch(currentRoute, initializeCursor);
   }
 });
 
 onBeforeUnmount(() => {
-  if (!isMobile()) {
+  if (!isMobileDevice()) {
     document.removeEventListener('mousemove', moveCursor);
-  
     if (animationFrameId) {
       cancelAnimationFrame(animationFrameId);
     }
+
+    interactiveElements.forEach(element => {
+      element.removeEventListener('mouseover', handleMouseOver);
+      element.removeEventListener('mouseleave', handleMouseLeave);
+    });
   }
 });
 </script>
@@ -111,7 +101,7 @@ onBeforeUnmount(() => {
   <teleport to="body">
     <div>
       <div 
-        ref="square" 
+        ref="cursorRef" 
         class="square" 
         :style="{ 
           left: `${cursorState.left}px`, 

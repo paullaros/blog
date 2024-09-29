@@ -13,40 +13,42 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRoute } from 'vitepress';
 
 const rotation = ref(0);
 const route = useRoute();
+const titleElement = ref(null);
 
-const incrementRotation = () => {
+const rotateLogo = () => {
   rotation.value += 45;
 };
 
-const animateOnLoad = () => {
-  incrementRotation();
-
-  setTimeout(() => {
-    incrementRotation(); 
-  }, 500); 
-};
-
-const handleRouteChange = () => {
-  animateOnLoad();
+const animateLogoTwice = () => {
+  rotateLogo();
+  setTimeout(rotateLogo, 500);
 };
 
 onMounted(() => {
-  setTimeout(() => {
-    animateOnLoad();
-  }, 250);
+  // Start the rotation animation after a brief delay
+  setTimeout(animateLogoTwice, 250);
 
-  watch(route, handleRouteChange);
+  // Watch for route changes to trigger the rotation animation
+  watch(route, animateLogoTwice);
 
-  const titleElement = document.querySelector('a.title');
+  titleElement.value = document.querySelector('a.title');
 
-  if (titleElement) {
-    titleElement.addEventListener('mouseenter', incrementRotation);
-    titleElement.addEventListener('mouseleave', incrementRotation);
+  if (titleElement.value) {
+    // Add event listeners for mouse enter and leave events to rotate the logo
+    titleElement.value.addEventListener('mouseenter', rotateLogo);
+    titleElement.value.addEventListener('mouseleave', rotateLogo);
+  }
+});
+
+onBeforeUnmount(() => {
+  if (titleElement.value) {
+    titleElement.value.removeEventListener('mouseenter', rotateLogo);
+    titleElement.value.removeEventListener('mouseleave', rotateLogo);
   }
 });
 </script>
