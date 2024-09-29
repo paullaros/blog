@@ -5,6 +5,7 @@ import DefaultTheme from 'vitepress/theme'
 // @ts-ignore
 import Date from './components/Date.vue'
 import Cursor from './components/Cursor.vue'
+import Logo from './components/Logo.vue'
 
 import './tailwind.css'
 import './custom.css'
@@ -16,7 +17,8 @@ export default {
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'doc-before': () => h(Date),
-      'layout-top': () => h(Cursor)
+      'layout-top': () => h(Cursor),
+      'nav-bar-title-before': () => h(Logo),
     })
   }
 }
