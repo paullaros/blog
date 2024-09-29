@@ -22,8 +22,8 @@ const router = useRouter();
 const cursorState = ref({
   opacity: 1,
   size: 16,
-  left: 0,
-  top: 0,
+  left: -8,
+  top: -8,
 });
 
 const initializeCursor = () => {
