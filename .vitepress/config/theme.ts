@@ -1,10 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
 
 const themeConfig: DefaultTheme.Config = {
-  logo: {
-    src: '/images/logo.svg',
-    alt: 'Logo'
-  },
   socialLinks: [
     { icon: 'github', link: 'https://github.com/paullaros' },
     { icon: 'linkedin', link: 'https://www.linkedin.com/in/paullaros/' },
