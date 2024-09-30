@@ -16,7 +16,7 @@ async function generateFeed(config: SiteConfig, hostname: string) {
       'Copyright (c) 2023-present, Paul Laros'
   })
 
-  const posts = await createContentLoader('src/*.md', {
+  const posts = await createContentLoader('../src/*.md', {
     excerpt: true,
     render: true
   }).load()
