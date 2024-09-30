@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import markdownItlinkAttributes from 'markdown-it-link-attributes'
 
 import theme from "./theme"
 import head from "./head"
@@ -26,5 +27,17 @@ export default defineConfig({
   ),
   buildEnd: async (context) => {
     generateFeed(context, hostname)
+  },
+  markdown: {
+    config: (md) => {
+      // Add `noopener`, `noreferrer` and `nofollow` to external links
+      // for security and SEO reasons.
+      md.use(markdownItlinkAttributes, {
+        attrs: {
+          target: "_blank",
+          rel: "noopener nofollow noreferrer",
+        },
+      })
+    }
   }
 })
