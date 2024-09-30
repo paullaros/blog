@@ -6,7 +6,6 @@
   --vp-c-text-dark-2: theme(colors.white / 50%);
   --vp-c-text-dark-3: theme(colors.white / 50%);
   --vp-sidebar-bg-color: theme(colors.transparent);
-  --vp-nav-bg-color: theme(colors.transparent);
 }
 
 .logo {
@@ -59,10 +58,35 @@ html:not(.dark) .VPSidebar {
   @apply h-full;
 }
 
+.VPNavBar .divider-line {
+  @apply bg-[var(--vp-c-divider)] !important;
+}
+
+/* Links */
 .vp-doc a {
-  text-decoration: none;
+  @apply no-underline;
+  @apply inline-block;
+  @apply relative;
 }
 
 .vp-doc a:hover {
-  text-decoration: underline;
+  @apply text-[var(--vp-c-brand-1)];
+}
+
+.vp-doc a::before {
+  content: '';
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  @apply absolute;
+  @apply w-full;
+  @apply h-[2px];
+  @apply bottom-[1px];
+  @apply left-0;
+  @apply bg-[var(--vp-c-brand-1)];
+}
+
+.vp-doc a:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
