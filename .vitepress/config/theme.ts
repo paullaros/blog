@@ -34,6 +34,10 @@ const themeConfig: DefaultTheme.Config = {
       text: 'VitePress',
       items: [
         {
+          text: 'Adding a custom font to the VitePress Default Theme',
+          link: '/adding-a-custom-font-to-the-vitepress-default-theme'
+        },
+        {
           text: 'Generating an RSS feed with VitePress',
           link: '/generating-an-rss-feed-with-vitepress'
         },
