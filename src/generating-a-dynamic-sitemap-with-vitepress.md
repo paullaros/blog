@@ -13,7 +13,7 @@ By including a sitemap on your website, you can ensure that all pages are indexe
 
 ## Build Hooks
 
-VitePress [build hooks](https://vitepress.dev/reference/site-config#build-hooks) enable you to enhance the functionality of your website, such as adding sitemaps, PWA support, and search indexing. In the examples below we're using the `transformHtml` hook to collect all the links, and `buildEnd` hook to generate the sitemap XML file.
+VitePress [build hooks](https://vitepress.dev/reference/site-config#build-hooks) enable you to enhance the functionality of your website, such as adding sitemaps, PWA support, and search indexing. In the examples below we're using the `buildEnd` hook to generate the sitemap XML file.
 
 ## Dependencies
 
