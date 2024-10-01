@@ -17,7 +17,7 @@ const cursorState = ref({
   opacity: 1,
   size: 16,
   left: -8,
-  top: -8,
+  top: -8
 });
 
 // Array to keep track of link elements
@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
           top: `${cursorState.top}px`, 
           opacity: cursorState.opacity, 
           width: `${cursorState.size}px`, 
-          height: `${cursorState.size}px` 
+          height: `${cursorState.size}px`
         }"
       ></div>
     </div>
@@ -122,5 +122,6 @@ onBeforeUnmount(() => {
   transform: translate(-50%, -50%);
   background-color: var(--vp-c-brand-1);
   z-index: 999;
+  border-radius: 50%;
 }
 </style>
