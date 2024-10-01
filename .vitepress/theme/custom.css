@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
 :root {
   --vp-c-brand-1: theme(colors.blue.500);
   --vp-c-brand-2: theme(colors.blue.400);
@@ -6,16 +13,28 @@
   --vp-c-text-dark-2: theme(colors.white / 50%);
   --vp-c-text-dark-3: theme(colors.white / 50%);
   --vp-sidebar-bg-color: theme(colors.transparent);
+  --vp-font-family-base: "Manrope", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --vp-nav-bg-color: rgba(255, 255, 255, 0.5);
+}
+
+html {
+  font-family: var(--vp-font-family-base);
+  @apply antialiased;
 }
 
 .logo {
   @apply p-1;
 }
 
+.content-body {
+  @apply backdrop-blur-sm;
+}
+
 /* Dark theme */
 .dark {
   --vp-c-bg: #121116;
   --vp-code-block-bg: #0E0F15;
+  --vp-nav-bg-color: rgba(18, 17, 22, 0.5);
 }
 
 .dark ::selection {

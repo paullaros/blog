@@ -1,6 +1,6 @@
 import { inject } from '@vercel/analytics'
 import { h } from 'vue'
-import DefaultTheme from 'vitepress/theme'
+import DefaultTheme from 'vitepress/theme-without-fonts'
 
 // @ts-ignore
 import Date from './components/Date.vue'
