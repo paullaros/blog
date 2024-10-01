@@ -10,7 +10,7 @@ import generateFeed from './hooks/generateFeed'
 const hostname: string = 'https://laros.io'
 
 export default defineConfig({
-  appearance: 'dark',
+  appearance: true,
   lastUpdated: true,
   cleanUrls: true,
   srcDir: 'src',
@@ -18,7 +18,7 @@ export default defineConfig({
   title: 'Paul Laros',
   description: 'Developer with a passion for writing clean and functional code, and bringing beautiful ideas to life',
   sitemap: {
-    hostname: 'https://laros.io'
+    hostname: hostname
   },
   head,
   themeConfig: theme,
