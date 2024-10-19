@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope.ttf') format('truetype');
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Variable.woff2') format('truetype');
   font-weight: 100 900;
   font-style: normal;
 }
@@ -13,7 +13,7 @@
   --vp-c-text-dark-2: theme(colors.white / 50%);
   --vp-c-text-dark-3: theme(colors.white / 50%);
   --vp-sidebar-bg-color: theme(colors.transparent);
-  --vp-font-family-base: "Manrope", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --vp-font-family-base: "Geist", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --vp-nav-bg-color: rgba(255, 255, 255, 0.5);
 }
 
