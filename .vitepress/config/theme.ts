@@ -63,6 +63,10 @@ const themeConfig: DefaultTheme.Config = {
           text: 'Updating timestamps automatically in Supabase',
           link: '/updating-timestamps-automatically-in-supabase'
         },
+        {
+          text: 'Seeding users in Supabase with a SQL seed script',
+          link: '/seeding-users-in-supabase-with-a-sql-seed-script'
+        },
       ]
     },
     {
