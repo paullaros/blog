@@ -1,12 +1,12 @@
 import { defineConfig } from 'vitepress'
 import markdownItlinkAttributes from 'markdown-it-link-attributes'
+import llmstxt, { copyOrDownloadAsMarkdownButtons } from 'vitepress-plugin-llms'
 
 import theme from "./theme"
 import head from "./head"
 
 import generateMeta from './hooks/generateMeta'
 import generateFeed from './hooks/generateFeed'
-import generateMarkdown from './hooks/generateMarkdown'
 
 const hostname: string = 'https://laros.io'
 
@@ -21,16 +21,25 @@ export default defineConfig({
   sitemap: {
     hostname: hostname
   },
+  vite: {
+    plugins: [
+      llmstxt({
+        domain: hostname,
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+        generateLLMFriendlyDocsForEachPage: true,
+        excludeUnnecessaryFiles: false,
+        excludeIndexPage: false
+      })
+    ]
+  },
   head,
   themeConfig: theme,
   transformHead: async (context) => (
     generateMeta(context, hostname)
   ),
   buildEnd: async (context) => {
-    await Promise.all([
-      generateFeed(context, hostname),
-      generateMarkdown(context, hostname)
-    ])
+    await generateFeed(context, hostname)
   },
   markdown: {
     config: (md) => {
@@ -42,6 +51,7 @@ export default defineConfig({
           rel: "noopener nofollow noreferrer",
         },
       })
+      md.use(copyOrDownloadAsMarkdownButtons)
     }
   }
 })
