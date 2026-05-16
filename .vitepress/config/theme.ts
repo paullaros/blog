@@ -31,6 +31,7 @@ const themeConfig: DefaultTheme.Config = {
     {
       text: 'llms.txt',
       link: '/llms.txt',
+      target: '_blank',
     },
   ],
   sidebar: [
