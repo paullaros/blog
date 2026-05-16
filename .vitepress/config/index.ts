@@ -6,6 +6,7 @@ import head from "./head"
 
 import generateMeta from './hooks/generateMeta'
 import generateFeed from './hooks/generateFeed'
+import generateMarkdown from './hooks/generateMarkdown'
 
 const hostname: string = 'https://laros.io'
 
@@ -26,7 +27,10 @@ export default defineConfig({
     generateMeta(context, hostname)
   ),
   buildEnd: async (context) => {
-    generateFeed(context, hostname)
+    await Promise.all([
+      generateFeed(context, hostname),
+      generateMarkdown(context, hostname)
+    ])
   },
   markdown: {
     config: (md) => {
