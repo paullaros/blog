@@ -31,3 +31,4 @@ Content-Signal: ai-train=yes, search=yes, ai-input=yes
 Allow: /
 
 Sitemap: https://laros.io/sitemap.xml
+Sitemap: https://laros.io/feed.rss
