@@ -55,11 +55,9 @@ function createLlmsTxt(pages: MarkdownPage[], hostname: string) {
 
   for (const page of pages) {
     const title = normalizeText(page.frontmatter.title)
-    const pageDescription = normalizeText(page.frontmatter.description)
     const markdownUrl = `${hostname}${markdownPublicPath(page.url)}`
-    const suffix = pageDescription ? `: ${pageDescription}` : ''
 
-    lines.push(`- [${escapeLinkText(title)}](${markdownUrl})${suffix}`)
+    lines.push(`- [${escapeLinkText(title)}](${markdownUrl}): ${title}`)
   }
 
   return `${lines.join('\n')}\n`
