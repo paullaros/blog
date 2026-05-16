@@ -28,6 +28,10 @@ const themeConfig: DefaultTheme.Config = {
       text: 'Contact',
       link: 'mailto:hey@laros.io',
     },
+    {
+      text: 'llms.txt',
+      link: '/llms.txt',
+    },
   ],
   sidebar: [
     {
